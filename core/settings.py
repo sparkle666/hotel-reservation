@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "allauth.account",
     'allauth.socialaccount',
     'jazzmin',
+    'django_browser_reload',
     # Apps
     'reservation',
 ]
@@ -54,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 ROOT_URLCONF = 'core.urls'
