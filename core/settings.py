@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,8 +41,6 @@ INSTALLED_APPS = [
     # Third-party
     "allauth",
     "allauth.account",
-    'allauth.socialaccount',
-    'jazzmin',
     'django_browser_reload',
     # Apps
     'reservation',
@@ -134,10 +133,16 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
+MEDIA_ROOT = [BASE_DIR, 'media']
+MEDIA_URL = '/media/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# AUTH_USER_MODEL = "reservation.CustomUser"
+
 
 # For All Auth, Login templates wont work without them
 
@@ -147,3 +152,12 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
+
+# https://django-jazzmin.readthedocs.io/configuration/
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Reserva Admin",
+    "site_header": "Reserva",
+    "copyright": "Reserva 2023",
+    "site_brand": "Reserva",
+}

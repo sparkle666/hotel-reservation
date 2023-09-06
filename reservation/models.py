@@ -2,7 +2,6 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 
-
 ROOM_TYPES = (
     ('ST', 'Standard'),
     ('DL', 'Deluxe'),
@@ -23,13 +22,19 @@ AMENITIES = {
 }
 
 RATING = (
-    (0, 0),
-    (1, 1),
-    (2, 2),
-    (3, 3),
-    (4, 4),
-    (5, 5),
+    (1, '1'),
+    (2, '2'),
+    (3, '3'),
+    (4, '4'),
+    (5, '5'),
 )
+
+# class CustomUser(User):
+#     tracking_id = models.CharField(max_length=200)
+
+#     def __str__(self):
+#         return self.username
+
 
 class Hotel(models.Model):
     name = models.CharField(max_length=100)
@@ -47,11 +52,11 @@ class Room(models.Model):
     featured_image = models.ImageField(upload_to = "images/", blank = True)
     created = models.DateTimeField(auto_now_add=timezone.now())
     description = models.TextField()
-    rating = models.CharField(max_length = 2, choices = RATING)
+    # rating = models.CharField(max_length = 2, choices=[(i, i) for i in range(6)] )
     hotel = models.ForeignKey(Hotel, on_delete = models.CASCADE)
 
     def __str__(self):
-        return f"{self.room_number}, {self.room_type}"
+        return f"{self.id}, {self.room_type}"
 
 
 class Reservation(models.Model):
