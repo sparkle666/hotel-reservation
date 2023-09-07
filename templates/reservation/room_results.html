@@ -1,0 +1,28 @@
+{% extends "_base.html" %}
+{% load static %}
+
+
+{% block content %}
+<div class="container">
+    {% if rooms %}
+    <div class="row">
+        <!-- First Column (Smaller Width) on Mobile -->
+        <div class="col-12 col-md-4 mb-3 mb-md-0">
+            <div class="bg-primary p-3">
+                <h2>Filter</h2>
+                <p>This column has smaller width on mobile.</p>
+            </div>
+        </div>
+        
+        <!-- Second Column on Mobile -->
+        <div class="col-12 col-md-8 mb-3 mb-md-0">
+            {% for room in rooms %}
+                {{ room.hotel.name }}
+            {% endfor %}
+        </div>
+    </div>
+    {% else %}
+    <p>Continue the rest of the index</p>
+    {% endif %}
+</div>
+{% endblock content %}

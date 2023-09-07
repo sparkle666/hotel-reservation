@@ -4,15 +4,10 @@
     <title>Home</title>
 {% endblock title %}
 
-{% block navigation %}
-    {% include "reservation/nav.html" %}
-{% endblock navigation %}
 
 {% block content %}
+    {% include "reservation/hero.html" %}
     {% include "reservation/reserveform.html" %}
-    {% for room in room_list %}
-        {{ room.hotel.name }}
-    {% endfor %}
-    
+
 {% endblock content %}
 

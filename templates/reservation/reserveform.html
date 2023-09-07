@@ -1,3 +1,20 @@
-<div class="border-1 p-8 bg-red-500 h-10"> 
-    <p>Something</p>
+<div class="container mt-4">
+    <form class="form-inline" method="post" action="{% url 'search_room' %}">
+        {% csrf_token %}
+        <div class="row g-3">
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="location" name="location" placeholder="Enter location">
+            </div>
+            <div class="col-sm">
+                <input type="date" class="form-control" id="startDate" name="startDate" placeholder="Start Date">
+            </div>
+            <div class="col-sm">
+                <input type="date" class="form-control" id="endDate" name="endDate" placeholder="End Date">
+            </div>
+            <div class="col-sm">
+                <button type="submit" class="btn btn-primary">Search</button>            
+            </div>
+          </div>
+    </form>
 </div>
+

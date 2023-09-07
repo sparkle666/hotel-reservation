@@ -12,3 +12,44 @@ body, h1, h2, h3, p, ul, ol, li {
 body {
     font-family: 'Inter', sans-serif;
 }
+.dark-blue-badge {
+    background-color: #003366; 
+  }
+
+  
+  .hero-section {
+    background-image: url("static/images/hotel1.jpg"); /* Replace with your own image URL */
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    padding: 100px 0;
+    text-align: center;
+    width: 100%;
+    background-color: red;
+}
+
+.hero-heading {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.hero-subheading {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+.hero-button {
+    padding: 10px 30px;
+    background-color: #ff5a5f;
+    color: #fff;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.hero-button:hover {
+    background-color: #e04549;
+}
