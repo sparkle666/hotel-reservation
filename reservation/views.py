@@ -21,15 +21,20 @@ def room_detail(request, room_id):
     return render(request, 'reservation/room_detail.html', {'room': room})
 
 def search_room(request):
-    if request.method == "POST":
-        location_query = request.GET.get("location", "")
+    
+    location_query = request.GET.get("location")
+    print(request.GET)
+    rooms = Room.objects.filter(hotel__location__icontains=location_query)
+    # rooms = Room.objects.all()
+    print(rooms)
+    return HttpResponse(rooms)
 
-        # Perform the search based on the location query
-        rooms = Room.objects.filter(hotel__location__icontains=location_query)
-
-        context = {
-            "rooms": rooms,
-            "search_query": location_query,
-        }
-        return render(request, "reservation/room_results.html", context)
-    return render(request, "reservation/index.html")
+    # Perform the search based on the location query
+    # print("Location:", location_query)
+    
+    # print(rooms)
+        
+    # return render(request, "reservation/room_results.html", {
+    #     "rooms": rooms,
+    #     "search_query": location_query,
+    # })
