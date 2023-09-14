@@ -1,9 +1,9 @@
-{% extends "_base.html" %}
+{% extends "reservation/index.html" %}
 {% load static %}
 
 
-{% block content %}
-<div class="container">
+{% block roomResult %}
+<div class="container my-4">
     {% if rooms %}
     <div class="row">
         <!-- First Column (Smaller Width) on Mobile -->
@@ -13,16 +13,16 @@
                 <p>This column has smaller width on mobile.</p>
             </div>
         </div>
-        
+
         <!-- Second Column on Mobile -->
         <div class="col-12 col-md-8 mb-3 mb-md-0">
             {% for room in rooms %}
-                {{ room.hotel.name }}
+            {{ room.hotel.name }}
             {% endfor %}
         </div>
     </div>
     {% else %}
-    <p>Continue the rest of the index</p>
+    <p>No rooms available...</p>
     {% endif %}
 </div>
-{% endblock content %}
+{% endblock roomResult %}

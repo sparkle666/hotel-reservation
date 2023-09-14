@@ -1,13 +1,47 @@
 {% extends "_base.html" %}
 
 {% block title %}
-    <title>Home</title>
+<title>Home</title>
 {% endblock title %}
 
-
 {% block content %}
-    {% include "reservation/hero.html" %}
-    {% include "reservation/reserveform.html" %}
+<div class="hero-section">
+    <div class="container">
+        <h1 class="hero-heading">Luxury Hotel Resort</h1>
+        <p class="hero-subheading">Experience the Ultimate Comfort and Elegance</p>
+        <a href="#reservation" class="btn btn-primary hero-button">Book Now</a>
+    </div>
+</div>
+{% if form %}
+<div class="container mt-4">
+    <form class="form-inline" method="POST" action="{% url 'index' %}">
+        {% csrf_token %}
+        <div class="row g-3">
+            <div class="col-sm-4">
+                <label for="">Location</label>
+                {{ form.location }}
+            </div>
+            <div class="col-sm">
+                <label for="">Check In Date</label>
+                {{ form.check_in }}
+            </div>
+            <div class="col-sm">
+                <label for="">Check Out Date</label>
+                {{ form.check_out }}
+            </div>
+            <div class="col-sm">
+                <button type="submit" class="btn btn-primary" style="margin-top: 1.5em;">Search</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endif %}
+
+{% block roomResult %}
+{% endblock roomResult %}
+
+{% for room in room_list %}
+{{ room }}
+{% endfor %}
 
 {% endblock content %}
-
