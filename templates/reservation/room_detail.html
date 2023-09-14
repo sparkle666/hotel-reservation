@@ -1,0 +1,21 @@
+{% extends '_base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <p>Room Details for </p>
+
+    <div class="d-flex flex-row justify-content-between">
+        <p>{{ room.hotel.name }}</p>
+        <p>{{ room.hotel.location }}</p>
+        {{ form.errors }}
+    </div>
+    <div>
+        <form action="{% url 'room_detail' room_id=room.id %}" method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit">Reserve</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}

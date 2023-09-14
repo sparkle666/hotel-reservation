@@ -1,12 +1,14 @@
 {% extends "_base.html" %}
 
 {% block title %}
-    <title>Login</title>
+<title>Login</title>
 {% endblock title %}
 
 {% block content %}
-    <div class="h-[100vh] p-20 [&>p]:my-10">
-        {{ form.as_p }}
-    </div>
-    
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Sign Up</button>
+</form>
+
 {% endblock content %}

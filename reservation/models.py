@@ -54,8 +54,20 @@ class Room(models.Model):
 
 
 class Reservation(models.Model):
+    ADULTS = (
+        (1, '1'),
+        (2, '2'),
+        (3, '3'),
+    )
+    CHILDREN = (
+        (1, '1'),
+        (2, '2'),
+        (3, '3'),
+    )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    room = models.ForeignKey(Room, on_delete=models.CASCADE)
+    room = models.ForeignKey(Room, on_delete=models.CASCADE, null = True, blank=True)
+    adults = models.CharField(max_length=3, choices=ADULTS, null = True)
+    children = models.CharField(max_length=3, choices=CHILDREN, null = True)
     check_in = models.DateTimeField()
     check_out = models.DateTimeField()
 
