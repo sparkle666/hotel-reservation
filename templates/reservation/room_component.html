@@ -1,0 +1,59 @@
+<div class="container">
+    <h3>See our list of exquisite rooms</h3>
+    <p>Elevate Your Stay with Our Diverse Range of Luxurious Room Types</p>
+    <br>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+        {% for room in rooms %}
+
+        <div class="col">
+
+            <div class="card h-100 shadow-sm">
+
+                {% if room.featured_image %}
+                <img src="{{ room.featured_image.url }}" class="card-img-top" alt="...">
+                {% else %}
+                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="...">
+                {% endif %}
+
+                <div class="card-body">
+
+                    <h5 class="card-title"> {{ room.hotel.name }} | {{ room.get_room_type_display }}</h5>
+
+                    <p class="card-text text-muted">
+                        <small>{{ room.description|truncatewords:10 }}</small>
+                    </p>
+
+                    <p class="card-text">
+                        {% for amenity, value in room.amenities.items %}
+
+                        {% if value %}
+
+                        <span class="badge me-1" style="background-color: blueviolet;">{{ amenity|title }}</span>
+
+                        {% endif %}
+
+                        {% endfor %}
+                    </p>
+
+                </div>
+
+                <div class="card-footer bg-white border-top-0">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="card-title text-muted">
+                            <small>${{ room.price }}</small>
+                        </h5>
+                        <button class="btn btn-sm btn-primary" style="background-color: rgb(28, 0, 54);">Reserve
+                            Room</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>

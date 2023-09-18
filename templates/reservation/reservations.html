@@ -1,0 +1,52 @@
+{% extends '_base.html' %} <!-- Extend your base template -->
+
+{% load static %}
+
+
+{% block title %}
+<title>Reservations</title>
+{% endblock title %}
+
+{% block content %}
+
+<div class="container my-5">
+    <div class="row">
+        {% for reservation in reservations %}
+        <div class="col-md-6 col-lg-4 col-sm-12">
+            <div class="card mb-4">
+                <img src="{{ reservation.room.featured_image.url }}" class="card-img-top"
+                    alt="{{ reservation.room.hotel.name }}" width="400px">
+                <!-- Add the badge with the days here -->
+                <span class="badge bg-primary rounded-pill" style="position: absolute; top: 10px; right: 10px;">
+                    {{ reservation.get_duration_in_days }} Days
+                </span>
+                <div class="card-body">
+                    <h5 class="card-title">{{ reservation.room.hotel.name }}</h5>
+                    <p class="card-text">{{ reservation.room.description|truncatechars:20 }}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <i class="fas fa-bed"></i> Adults: {{ reservation.adults }}
+                    </li>
+                    <li class="list-group-item">
+                        <i class="fas fa-child"></i> Children: {{ reservation.children }}
+                    </li>
+                    <li class="list-group-item">
+                        <i class="fas fa-calendar-check"></i> Check-in: {{ reservation.check_in|date:"F d, Y" }}
+                    </li>
+                    <li class="list-group-item">
+                        <i class="fas fa-calendar-times"></i> Check-out: {{ reservation.check_out|date:"F d, Y" }}
+                    </li>
+                </ul>
+                <div class="card-footer">
+                    <button class="btn btn-primary">
+                        Cancel Reservation
+                    </button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

@@ -1,9 +1,15 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 
 /* Reset some default styles for better consistency */
-body, h1, h2, h3, p, ul, ol, li {
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+li {
     margin: 0;
     padding: 0;
 }
@@ -12,21 +18,45 @@ body, h1, h2, h3, p, ul, ol, li {
 body {
     font-family: 'Inter', sans-serif;
 }
-.dark-blue-badge {
-    background-color: #003366; 
-  }
 
-  
-  .hero-section {
-    background-image: url("static/images/hotel1.jpg"); /* Replace with your own image URL */
+.dark-blue-badge {
+    background-color: #003366;
+}
+
+
+.hero-section {
+    width: 100%;
+    height: 85vh;
+    background: url("/static/images/hotel2.jpg");
     background-size: cover;
     background-position: center;
+    position: relative;
+    color: white;
+}
+
+.hero-section>div.hero-title {
+    position: absolute;
+    top: 10vh;
+    left: 2em;
+}
+
+.hero-section .hero-form {
+    position: absolute;
+    bottom: 0px;
+    left: 2em;
+}
+
+/* .hero-section {
+    background-image: url("static/images/hotel1.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: #fff;
     padding: 100px 0;
     text-align: center;
     width: 100%;
-    background-color: red;
-}
+    height: 50vh;
+} */
 
 .hero-heading {
     font-size: 3rem;
@@ -52,4 +82,12 @@ body {
 
 .hero-button:hover {
     background-color: #e04549;
+}
+
+.my-card {
+    width: 400px;
+    margin: auto;
+    padding: 50px 30px;
+    border-radius: 10px;
+    background-color: white;
 }

@@ -161,3 +161,5 @@ JAZZMIN_SETTINGS = {
     "copyright": "Reserva 2023",
     "site_brand": "Reserva",
 }
+
+LOGIN_REDIRECT_URL = '/'

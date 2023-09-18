@@ -2,19 +2,35 @@
 
 {% block content %}
 
-<div class="container">
-    <p>Room Details for </p>
-
+<div class="container my-4">
     <div class="d-flex flex-row justify-content-between">
-        <p>{{ room.hotel.name }}</p>
-        <p>{{ room.hotel.location }}</p>
+        <h3 class="mb-5">Reseve {{ room.hotel.name }} located in {{ room.hotel.location }}</h3>
         {{ form.errors }}
     </div>
-    <div>
+    <div class="container">
         <form action="{% url 'room_detail' room_id=room.id %}" method="POST">
             {% csrf_token %}
-            {{ form }}
-            <button type="submit">Reserve</button>
+            <div class="row mb-3">
+                <div class="col-sm-12 col-md-6 col-lg-6">
+                    {{ form.check_in.label }}
+                    {{ form.check_in }}
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6">
+                    {{ form.check_out.label }}
+                    {{ form.check_out }}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-12 col-md-6 col-lg-6">
+                    {{ form.adults.label }}
+                    {{ form.adults }}
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6">
+                    {{ form.children.label }}
+                    {{ form.children }}
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Reserve</button>
         </form>
     </div>
 </div>

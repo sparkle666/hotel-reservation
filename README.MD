@@ -2,6 +2,8 @@
 
 This is a hotel room reservation web application built with Django.
 
+![Local Image](reservewebsite.PNG)
+
 ## Features
 
 - User authentication and profiles using django-allauth

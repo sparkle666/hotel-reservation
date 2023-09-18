@@ -5,43 +5,43 @@
 {% endblock title %}
 
 {% block content %}
-<div class="hero-section">
-    <div class="container">
+<div class="hero-section mb-5">
+    <div class="container hero-title">
         <h1 class="hero-heading">Luxury Hotel Resort</h1>
-        <p class="hero-subheading">Experience the Ultimate Comfort and Elegance</p>
+        <p class="hero-subheading">Experience the Ultimate Comfort and Elegance. </p>
         <a href="#reservation" class="btn btn-primary hero-button">Book Now</a>
     </div>
+    {% if form %}
+    <div class="container my-4 hero-form card rounded-md p-4">
+        <form class="form-inline" method="POST" action="{% url 'index' %}">
+            {% csrf_token %}
+            <div class="row g-3 text-dark">
+                <div class="col-sm-4">
+                    {{ form.location.label }}
+                    {{ form.location }}
+                </div>
+                <div class="col-sm">
+                    {{ form.check_in.label }}
+                    {{ form.check_in }}
+                </div>
+                <div class="col-sm">
+                    {{ form.check_out.label }}
+                    {{ form.check_out }}
+                </div>
+                <div class="col-sm">
+                    <button type="submit" class="btn btn-primary" style="margin-top: 1.5em;">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    {% endif %}
 </div>
-{% if form %}
-<div class="container mt-4">
-    <form class="form-inline" method="POST" action="{% url 'index' %}">
-        {% csrf_token %}
-        <div class="row g-3">
-            <div class="col-sm-4">
-                <label for="">Location</label>
-                {{ form.location }}
-            </div>
-            <div class="col-sm">
-                <label for="">Check In Date</label>
-                {{ form.check_in }}
-            </div>
-            <div class="col-sm">
-                <label for="">Check Out Date</label>
-                {{ form.check_out }}
-            </div>
-            <div class="col-sm">
-                <button type="submit" class="btn btn-primary" style="margin-top: 1.5em;">Search</button>
-            </div>
-        </div>
-    </form>
-</div>
+
+
+{% if room_list %}
+{% with rooms=room_list %}
+{% include "reservation/room_component.html" %}
+{% endwith %}
 {% endif %}
-
-{% block roomResult %}
-{% endblock roomResult %}
-
-{% for room in room_list %}
-{{ room }}
-{% endfor %}
 
 {% endblock content %}
